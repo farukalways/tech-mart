@@ -6,7 +6,7 @@ const retrieveProducts = async () => {
   return response.data;
 };
 
-const AllProduct = () => {
+const AllProduct = ({ onProductClick }) => {
   const {
     data: products,
     error,
@@ -34,6 +34,7 @@ const AllProduct = () => {
           {products.map((product) => (
             <div
               key={product.id}
+              onClick={() => onProductClick(product.id)}
               className="max-w-sm bg-white rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden"
             >
               <div className="relative">

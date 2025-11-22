@@ -2,8 +2,6 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
 const retrieveProduct = async ({ queryKey }) => {
-  console.log(queryKey);
-
   const response = await axios.get(
     `http://localhost:3000/products/${queryKey[1]}`
   );
@@ -18,7 +16,9 @@ const Product = ({ id }) => {
   } = useQuery({
     queryKey: ["products", id],
     queryFn: retrieveProduct,
+    enabled: !!id,
   });
+  if (!id) return <p>No product id</p>;
 
   if (error)
     return (
