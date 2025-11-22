@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Products from "./products/AllProduct";
-import Product from "./products/Product";
+// import Product from "./products/Product";
+import AddProduct from "./products/AddProduct";
 const App = () => {
   const [selectedProductId, setSelectedProductId] = useState(null);
 
@@ -10,12 +11,21 @@ const App = () => {
 
   return (
     <div className="w-11/12 mx-auto flex justify-between">
-      <div className="w-2/3">
+      <div className={selectedProductId === null ? "w-full" : "w-2/3"}>
         <Products onProductClick={handleProductClick} />
       </div>
 
+      {/* {selectedProductId && (
+        <div className="w-1/3 top-0 right-0 fixed">
+          <Product
+            id={selectedProductId}
+            onBack={() => setSelectedProductId(null)}
+          />
+        </div>
+      )} */}
+
       <div className="w-1/3 top-0 right-0 fixed">
-        <Product id={selectedProductId} />
+        <AddProduct />
       </div>
     </div>
   );

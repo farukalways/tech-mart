@@ -8,7 +8,7 @@ const retrieveProduct = async ({ queryKey }) => {
   return response.data;
 };
 
-const Product = ({ id }) => {
+const Product = ({ id, onBack }) => {
   const {
     data: product,
     error,
@@ -40,9 +40,12 @@ const Product = ({ id }) => {
           className="w-full h-56 object-cover"
         />
 
-        {/* <span className="absolute top-3 left-3 bg-white/80 px-3 py-1 rounded-lg text-xs font-semibold backdrop-blur">
-                  SIM-Free
-                </span> */}
+        <span
+          onClick={onBack}
+          className="absolute top-3 right-3 bg-white/80 px-3 py-1 rounded-lg text-xs font-semibold backdrop-blur cursor-pointer"
+        >
+          Back
+        </span>
 
         <span className="absolute bottom-3 right-3 bg-blue-600 text-white px-3 py-1 rounded-lg text-sm font-medium shadow">
           $899
