@@ -11,7 +11,10 @@ const App = () => {
 
   return (
     <div className="w-11/12 mx-auto flex justify-between">
-      <div className={selectedProductId === null ? "w-full" : "w-2/3"}>
+      <div
+        // className={selectedProductId === null ? "w-full" : "w-2/3"}
+        className="w-2/3"
+      >
         <Products onProductClick={handleProductClick} />
       </div>
 

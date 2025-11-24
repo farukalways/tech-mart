@@ -35,7 +35,7 @@ const AllProduct = ({ onProductClick }) => {
             <div
               key={product.id}
               onClick={() => onProductClick(product.id)}
-              className="max-w-sm bg-white rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden"
+              className="max-w-sm bg-white rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden flex flex-col h-full"
             >
               <div className="relative">
                 <img
@@ -53,7 +53,7 @@ const AllProduct = ({ onProductClick }) => {
                 </span>
               </div>
 
-              <div className="p-5">
+              <div className="p-5 flex flex-col grow">
                 <h2 className="text-lg font-semibold">{product.title}</h2>
                 <p className="text-gray-500 text-sm mt-1">
                   {product.description.substring(0, 40)}...
@@ -81,7 +81,7 @@ const AllProduct = ({ onProductClick }) => {
                   </span>
                 </div>
 
-                <button className="mt-5 w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-xl text-sm font-semibold transition-all duration-200">
+                <button className="mt-auto w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-xl text-sm font-semibold transition-all duration-200 ">
                   Add to Cart
                 </button>
               </div>
