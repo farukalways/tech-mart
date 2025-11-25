@@ -1,18 +1,23 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import { useState } from "react";
 
-const retrieveProducts = async () => {
-  const response = await axios.get("http://localhost:3000/products");
+const retrieveProducts = async ({ queryKey }) => {
+  const response = await axios.get(
+    `http://localhost:3000/products?_page=${queryKey[1].page}&_per_page=6`
+  );
   return response.data;
 };
 
 const AllProduct = ({ onProductClick }) => {
+  const [page, setPage] = useState(1);
+
   const {
     data: products,
     error,
     isLoading,
   } = useQuery({
-    queryKey: ["products"],
+    queryKey: ["products", { page }],
     queryFn: retrieveProducts,
   });
 
@@ -29,10 +34,10 @@ const AllProduct = ({ onProductClick }) => {
 
   return (
     <div>
-      {products.length > 0 ? (
-        <div className="grid grid-cols-3 gap-5">
-          {products.map((product) => (
-            <div
+      {products.data.length > 0 ? (
+        <ul className="grid grid-cols-3 gap-5">
+          {products.data.map((product) => (
+            <li
               key={product.id}
               onClick={() => onProductClick(product.id)}
               className="max-w-sm bg-white rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden flex flex-col h-full"
@@ -85,12 +90,33 @@ const AllProduct = ({ onProductClick }) => {
                   Add to Cart
                 </button>
               </div>
-            </div>
+            </li>
           ))}
-        </div>
+        </ul>
       ) : (
         <p>no data availeable</p>
       )}
+
+      <div className="flex">
+        {products.prev && (
+          <button
+            className="p-1 mx-1 bg-gray-100 border cursor-pointer rounded-sm"
+            onClick={() => setPage(products.prev)}
+          >
+            {" "}
+            Prev{" "}
+          </button>
+        )}
+        {products.next && (
+          <button
+            className="p-1 mx-1 bg-gray-100 border cursor-pointer rounded-sm"
+            onClick={() => setPage(products.next)}
+          >
+            {" "}
+            Next{" "}
+          </button>
+        )}
+      </div>
     </div>
   );
 };
