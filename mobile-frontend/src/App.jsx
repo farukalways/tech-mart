@@ -13,7 +13,7 @@ const App = () => {
     <div className="w-11/12 mx-auto flex justify-between">
       <div
         // className={selectedProductId === null ? "w-full" : "w-2/3"}
-        className="w-2/3"
+        className="w-3/3"
       >
         <Products onProductClick={handleProductClick} />
       </div>
@@ -27,9 +27,9 @@ const App = () => {
         </div>
       )} */}
 
-      <div className="w-1/3 top-0 right-0 fixed">
+      {/* <div className="w-1/3 top-0 right-0 fixed">
         <AddProduct />
-      </div>
+      </div> */}
     </div>
   );
 };

@@ -1,14 +1,6 @@
 {
   "products": [
     {
-      "id": "1",
-      "title": "iPhone 9",
-      "description": "An apple mobile which is nothing like apple",
-      "price": 549,
-      "rating": 4.69,
-      "thumbnail": "https://i.ibb.co.com/6mrC6Q4/images-1.jpg"
-    },
-    {
       "id": "2",
       "title": "iPhone X",
       "description": "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...",
@@ -47,14 +39,6 @@
       "price": 1749,
       "rating": 4.57,
       "thumbnail": "https://i.ibb.co.com/nQfJj2d/61ni3t1ry-QL-AC-SL1500.jpg"
-    },
-    {
-      "id": "7",
-      "title": "Samsung Galaxy Book",
-      "description": "Samsung Galaxy Book S (2020) Laptop With Intel Lakefield Chip, 8GB of RAM Launched",
-      "price": 1499,
-      "rating": 4.25,
-      "thumbnail": "https://i.ibb.co.com/tJJs2zJ/images.jpg"
     },
     {
       "id": "8",
@@ -119,14 +103,6 @@
       "price": 244,
       "rating": 4,
       "thumbnail": "https://i.ibb.co.com/C8QRY4T/17-PAIR2-super-Jumbo.jpg"
-    },
-    {
-      "id": "cc3158ba-ca00-4e73-a6cc-9b9cb14ee42d",
-      "title": "Vegetable",
-      "description": "very good product",
-      "price": 244,
-      "rating": 4,
-      "thumbnail": "https://i.ibb.co.com/8MJRKM4/spaghetti-bolognese-thecozyapron-1.jpg"
     }
   ]
 }

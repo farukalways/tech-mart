@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import { useState } from "react";
 
@@ -10,6 +10,7 @@ const retrieveProducts = async ({ queryKey }) => {
 };
 
 const AllProduct = ({ onProductClick }) => {
+  const queryClient = useQueryClient();
   const [page, setPage] = useState(1);
 
   const {
@@ -20,6 +21,15 @@ const AllProduct = ({ onProductClick }) => {
     queryKey: ["products", { page }],
     queryFn: retrieveProducts,
   });
+
+  const mutation = useMutation({
+    mutationFn: (id) => axios.delete(`http://localhost:3000/products/${id}`),
+    onSuccess: () => queryClient.invalidateQueries(["products"]),
+  });
+
+  const handleDelete = (id) => {
+    mutation.mutate(id);
+  };
 
   if (error)
     return (
@@ -86,8 +96,14 @@ const AllProduct = ({ onProductClick }) => {
                   </span>
                 </div>
 
-                <button className="mt-auto w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-xl text-sm font-semibold transition-all duration-200 ">
+                <button className="mt-auto w-full bg-blue-500 hover:bg-blue-700 text-white py-2 rounded-xl text-sm font-semibold transition-all duration-200 mb-5 ">
                   Add to Cart
+                </button>
+                <button
+                  className="mt-auto w-full bg-red-500 hover:bg-red-700 text-white py-2 rounded-xl text-sm font-semibold transition-all duration-200"
+                  onClick={() => handleDelete(product.id)}
+                >
+                  Delete to Cart
                 </button>
               </div>
             </li>
